@@ -20,5 +20,11 @@
 
     "editor.rulers": [88],
     "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "wolf.disableHotModeWarning": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
