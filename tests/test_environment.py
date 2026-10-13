@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 import torch
 
 from src.biomedical_utils import normalize_signal
@@ -49,3 +50,18 @@ def test_normalize_signal_numpy_array():
         result,
         [0.0, 1 / 3, 2 / 3, 1.0],
     )
+
+
+def test_normalize_signal_rejects_nan():
+    with pytest.raises(ValueError, match="finite values"):
+        normalize_signal([1, float("nan"), 3])
+
+
+def test_normalize_signal_rejects_infinity():
+    with pytest.raises(ValueError, match="finite values"):
+        normalize_signal([1, float("inf"), 3])
+
+
+def test_normalize_signal_rejects_multidimensional_input():
+    with pytest.raises(ValueError, match="one-dimensional"):
+        normalize_signal([[1, 2], [3, 4]])
