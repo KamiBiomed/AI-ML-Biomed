@@ -38,3 +38,14 @@ def test_normalize_signal_empty():
 
 def test_normalize_signal_constant():
     assert normalize_signal([5, 5, 5]) == [0.0, 0.0, 0.0]
+
+
+def test_normalize_signal_numpy_array():
+    signal = np.array([-2, 0, 2, 4])
+
+    result = normalize_signal(signal)
+
+    assert np.allclose(
+        result,
+        [0.0, 1 / 3, 2 / 3, 1.0],
+    )

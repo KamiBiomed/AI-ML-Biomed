@@ -1,12 +1,18 @@
+import numpy as np
+
+
 def normalize_signal(signal):
     """Scale signal values to the range [0, 1]."""
-    if not signal:
+    signal = np.asarray(signal, dtype=float)
+
+    if signal.size == 0:
         return []
 
-    min_value = min(signal)
-    max_value = max(signal)
+    min_value = np.min(signal)
+    max_value = np.max(signal)
 
     if min_value == max_value:
-        return [0.0] * len(signal)
+        return np.zeros_like(signal).tolist()
 
-    return [(value - min_value) / (max_value - min_value) for value in signal]
+    normalized = (signal - min_value) / (max_value - min_value)
+    return normalized.tolist()
