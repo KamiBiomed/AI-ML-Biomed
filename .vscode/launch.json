@@ -1,3 +1,4 @@
+
 {
     "version": "0.2.0",
     "configurations": [
@@ -7,6 +8,15 @@
             "request": "launch",
             "program": "${file}",
             "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Debug Signal Visualization",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.signal_visualization",
+            "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"
         }
     ]
