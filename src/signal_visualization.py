@@ -5,6 +5,16 @@ from src.biomedical_utils import normalize_signal
 
 # 1. Generate a synthetic biomedical signal
 rng = np.random.default_rng(42)
+sampling_frequency = 500
+number_of_samples = 1000
+time = np.arange(number_of_samples) / sampling_frequency
+
+actual_sampling_frequency = 1 / np.mean(np.diff(time))
+time_interval_ms = np.mean(np.diff(time)) * 1000
+
+print(f"Sampling frequency: {actual_sampling_frequency:.1f} Hz")
+print(f"Time between samples: {time_interval_ms:.2f} ms")
+print(f"Total samples: {len(time)}")
 time = np.linspace(0, 2, 1000)
 
 signal = (
